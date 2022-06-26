@@ -1,14 +1,36 @@
 package com.chuwa.blog.payload;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+import java.util.Set;
+
 /**
  * @author b1go
  * @date 6/16/22 11:52 PM
  */
 public class PostDto {
     private long id;
+    /**
+     * 1. title should not be null or empty
+     * 2. title should have at least 2 characters
+     * Question, our database have set it as nullable=false,
+     * why do we need to set validation here? what is the benefits?
+     */
+    @NotEmpty
+    @Size(min = 2, message = "Post title should have at least 2 characters")
     private String title;
+
+    @NotEmpty
+    @Size(min = 10, message = "Post description should have at least 10 characters")
     private String description;
+
+    @NotEmpty
     private String content;
+
+    private Set<CommentDto> comments;
+    private LocalDateTime createDateTime;
+    private LocalDateTime updateDateTime;
 
     public long getId() {
         return id;
@@ -42,13 +64,27 @@ public class PostDto {
         this.content = content;
     }
 
-    @Override
-    public String toString() {
-        return "PostDto{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", content='" + content + '\'' +
-                '}';
+    public Set<CommentDto> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<CommentDto> comments) {
+        this.comments = comments;
+    }
+
+    public LocalDateTime getCreateDateTime() {
+        return createDateTime;
+    }
+
+    public void setCreateDateTime(LocalDateTime createDateTime) {
+        this.createDateTime = createDateTime;
+    }
+
+    public LocalDateTime getUpdateDateTime() {
+        return updateDateTime;
+    }
+
+    public void setUpdateDateTime(LocalDateTime updateDateTime) {
+        this.updateDateTime = updateDateTime;
     }
 }

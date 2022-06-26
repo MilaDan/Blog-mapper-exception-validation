@@ -45,11 +45,14 @@ public class Post {
     public Post() {
     }
 
-    public Post(Long id, String title, String description, String content) {
+    public Post(Long id, String title, String description, String content, Set<Comment> comments, LocalDateTime createDateTime, LocalDateTime updateDateTime) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.content = content;
+        this.comments = comments;
+        this.createDateTime = createDateTime;
+        this.updateDateTime = updateDateTime;
     }
 
     public Long getId() {
@@ -84,6 +87,14 @@ public class Post {
         this.content = content;
     }
 
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
     public LocalDateTime getCreateDateTime() {
         return createDateTime;
     }
@@ -98,15 +109,5 @@ public class Post {
 
     public void setUpdateDateTime(LocalDateTime updateDateTime) {
         this.updateDateTime = updateDateTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", content='" + content + '\'' +
-                '}';
     }
 }
