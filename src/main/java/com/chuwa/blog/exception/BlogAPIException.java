@@ -1,11 +1,13 @@
 package com.chuwa.blog.exception;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * @author b1go
  * @date 6/24/22 4:43 PM
  */
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class BlogAPIException extends RuntimeException {
     private HttpStatus httpStatus;
     private String message;
