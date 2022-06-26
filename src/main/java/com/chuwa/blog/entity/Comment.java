@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * @author b1go
@@ -107,5 +108,22 @@ public class Comment {
                 ", email='" + email + '\'' +
                 ", body='" + body + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Comment)) {
+            return false;
+        }
+        Comment comment = (Comment) o;
+        return getId() == comment.getId() && getName().equals(comment.getName()) && getEmail().equals(comment.getEmail()) && getBody().equals(comment.getBody()) && getPost().equals(comment.getPost()) && getCreateDateTime().equals(comment.getCreateDateTime()) && getUpdateDateTime().equals(comment.getUpdateDateTime());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getEmail(), getBody(), getPost(), getCreateDateTime(), getUpdateDateTime());
     }
 }
