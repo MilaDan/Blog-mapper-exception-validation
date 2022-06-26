@@ -22,7 +22,17 @@ git remote set-url origin https://github.com/TAIsRich/blog-rest-api.git
 ```
 
 ### Blog-mapper-exception-validation
+* Mapper
+* Exception
+* Validation
+* Unit Test
+
 ```
 git remote set-url origin https://github.com/TAIsRich/Blog-mapper-exception-validation.git
+```
+
+### Blog-mapper-exception-validation
+```
+git remote set-url origin https://github.com/TAIsRich/Blog-Securing-APIs.git
 ```
 
